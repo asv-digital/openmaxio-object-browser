@@ -28,8 +28,15 @@ RUN git checkout v1.7.6 && \
 WORKDIR /app
 RUN make console
 
+# Cria diretórios para persistência
+RUN mkdir -p /app/data /app/config
+
 # Expõe porta
 EXPOSE 3000
+
+# Define variáveis de ambiente
+ENV CONSOLE_MINIO_SERVER=s3.zappchat.io:443
+ENV NODE_ENV=production
 
 # Inicia o servidor
 CMD ["./console", "server"]
