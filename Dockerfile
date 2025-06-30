@@ -18,11 +18,9 @@ WORKDIR /app
 # Copia o código fonte (Coolify fará isso automaticamente)
 COPY . .
 
-# Muda para a versão correta e compila o frontend
+# Compila o frontend
 WORKDIR /app/web-app
-RUN git checkout v1.7.6 && \
-    yarn install && \
-    yarn build
+RUN yarn install && yarn build
 
 # Compila o console backend (em Go)
 WORKDIR /app
@@ -35,7 +33,7 @@ RUN mkdir -p /app/data /app/config
 EXPOSE 3000
 
 # Define variáveis de ambiente
-ENV CONSOLE_MINIO_SERVER=s3.zappchat.io:443
+ENV CONSOLE_MINIO_SERVER=files.zappchat.io:443
 ENV NODE_ENV=production
 
 # Inicia o servidor
