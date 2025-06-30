@@ -15,8 +15,9 @@ RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
 # Define diretório de trabalho
 WORKDIR /app
 
-# Copia o código fonte (Coolify fará isso automaticamente)
-COPY . .
+# Clona o repositório original e faz checkout da versão específica
+RUN git clone https://github.com/OpenMaxIO/openmaxio-object-browser . && \
+    git checkout v1.7.6
 
 # Compila o frontend
 WORKDIR /app/web-app
