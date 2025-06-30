@@ -30,10 +30,12 @@ RUN make console
 RUN mkdir -p /app/data /app/config
 
 # Expõe porta
-EXPOSE 3000
+EXPOSE 9090
 
 # Define variáveis de ambiente
-ENV CONSOLE_MINIO_SERVER=files.zappchat.io:443
+ENV CONSOLE_MINIO_SERVER=https://files.zappchat.io:443
+ENV CONSOLE_PBKDF_PASSPHRASE=SECRET
+ENV CONSOLE_PBKDF_SALT=SECRET
 ENV NODE_ENV=production
 
 # Inicia o servidor
